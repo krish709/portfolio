@@ -1,0 +1,185 @@
+/* 🌍 Base Theme */
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: #0b0f19;
+  transition: 0.3s;
+}
+
+body.light {
+  background: #f5f7fb;
+}
+
+/* 🧊 Header */
+.header {
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 1rem 3rem;
+  z-index: 1000;
+
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+
+  transition: 0.3s;
+
+  /* 🔥 DARK */
+  &--dark {
+    background: rgba(10, 15, 30, 0.7);
+    color: #fff;
+  }
+
+  /* ☀️ LIGHT */
+  &--light {
+    background: rgba(255,255,255,0.7);
+    color: #111;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  /* Logo */
+  &__logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: linear-gradient(90deg, #3b82f6, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Nav */
+  &__nav {
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    margin: 0 1rem;
+    font-size: 0.95rem;
+    cursor: pointer;
+    position: relative;
+    opacity: 0.8;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &--active {
+      color: #60a5fa;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 6px;
+        height: 6px;
+        background: #60a5fa;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  /* Right Section */
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Search */
+  &__search {
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    border: none;
+    outline: none;
+    margin-right: 1rem;
+
+    background: rgba(255,255,255,0.1);
+    color: inherit;
+  }
+
+  body.light &__search {
+    background: rgba(0,0,0,0.05);
+  }
+
+  /* Theme Toggle */
+  &__theme {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+
+    background: rgba(255,255,255,0.1);
+  }
+
+  body.light &__theme {
+    background: rgba(0,0,0,0.1);
+  }
+}
+
+/* Hide hamburger on desktop */
+.header__menuBtn {
+  display: none;
+  font-size: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+   &--dark {
+    color: #fff; // dark mode
+  }
+}
+
+/* Offcanvas base */
+.offcanvas {
+  position: fixed;
+  top: 0;
+  right: -260px;
+  width: 260px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+  transition: 0.3s ease;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.offcanvas.open {
+  right: 0;
+}
+
+.offcanvas__close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.offcanvas__nav span {
+  display: block;
+  margin: 15px 0;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 999;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .header__nav {
+    display: none;
+  }
+
+  .header__menuBtn {
+    display: block;
+  }
+}
